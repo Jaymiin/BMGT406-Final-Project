@@ -18,7 +18,7 @@ $inputpassword = $_GET['password'];
 // Check if the table exists in the db.
 if (tableExists($db, $name_of_table)) {
 
-	// Prepare a SQL query and bind variables. 
+	// Prepare a SQL query and bind variables.
 	$sqlQuery = "SELECT * from $name_of_table where email = :email";
 	$statement1 = $db->prepare($sqlQuery);
 	$statement1->bindValue(':email', $inputemail, PDO::PARAM_STR);
@@ -30,8 +30,8 @@ if (tableExists($db, $name_of_table)) {
 		// Query fails.
 		$body = "Login Failed." .$db->errorInfo();
 	} else {
-		$singleRow = $statement1->fetch(); 
-			if(!$singleRow) { 
+		$singleRow = $statement1->fetch();
+			if(!$singleRow) {
 				// Invalid email.
 				$body .= "Invalid email: $inputemail";
 			} else {
@@ -40,37 +40,32 @@ if (tableExists($db, $name_of_table)) {
 					$body .= "Invalid password.";
 				} else {
 					$firstname=$singleRow['firstname'];
-					$body.="What would you like to do, $firstname?<br/><br/>"; 			
-			   }
-			}
-		}
-	// Closing query connection
-	$statement1->closeCursor();	
-} else {
-// Table does not exist in db.
-	$body .= "Table " . $name_of_table . " does not exist.<br/>";
-}
+					//$email = $singleRow['email'];
+					$body.="What would you like to do, $firstname?<br/><br/>";
+					$body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
 
-$body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
-		
 			<strong>Activity Name</strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
 			<strong>Time</strong><input class=\"ins\" type=\"time\" name=\"actTime\" /><br/><br/>
 			<strong>Date</strong><input class=\"ins\" type=\"date\" name=\"actDate\" /><br/><br/>
 			<strong>Description</strong><input class=\"ins\" type=\"text\" name=\"actDescription\" /><br/><br/>
-			
+
 			<input  class=\"button\" type=\"submit\" name=\"createAct\" value=\"Create Activity\" /><br /><br />
 </form>
 
 
 <form class=\"view\" action=\"ViewActivities.php\" method=\"GET\">
-			<input class=\"button\" class=\"view\" type=\"submit\" name=\"createAct\" value=\"View Activities\" /><br /><br />
+			<input class=\"button\" class=\"view\" type=\"submit\" name=\"viewAct\" value=\"View Activities\" /><br /><br />
+</form>
+
+<form  class=\"viewF\" action=\"ViewFriends.php\" method=\"GET\">
+			<strong>My Email</strong><input type=\"text\" name=\"userEmail\"><br/><br/>
+					<input class=\"button\" class=\"viewF\" type=\"submit\" name=\"viewFriends\" value=\"View Friends\" /><br /><br />
 </form>
 
 
-
-<form  class=\"addF\" action=\"addFriend.php\" method=\"GET\">
-			<strong>User Email</strong><input class=\"ins\" type=\"text\" name=\"email\" /><br/><br/>
-			
+<form  class=\"addF\" action=\"InsertFriend.php\" methods=\"GET\">
+			<var name=\"userEmail\">$inputemail</var>
+			<strong>Friend's Email</strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
 			<input class=\"button\" class=\"addF\" type=\"submit\" name=\"addF\" value=\"Add Friend\" /><br /><br />
 </form>
 
@@ -84,28 +79,15 @@ $body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
       <iframe src=\"https://www.facebook.com/plugins/like.php?href=http://www.umiacs.umd.edu/~louiqa/2016/BMGT406/\" style=\"border:none; width:450px; height:80px\"></iframe>
   	</div>
 	</footer>";
+			   }
+			}
+		}
+	// Closing query connection
+	$statement1->closeCursor();
+} else {
+// Table does not exist in db.
+	$body .= "Table " . $name_of_table . " does not exist.<br/>";
+}
+
 echo generatePage($title,$body);
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

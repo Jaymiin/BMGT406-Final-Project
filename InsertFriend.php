@@ -6,29 +6,26 @@ ini_set("display_errors","1");
 error_reporting(E_ALL);
 
 // Initialize $title and $body.
-$title = "Create a New Activity";
+$title = "Create a New Friendship";
 $body = "<fieldset><legend> $title </legend>";
 
 // Initialize variables with values for the name of the table ($name_of_table)
-$name_of_table = 'activities';
+$name_of_table = 'workoutFriends';
 // and the 6 fields - firstname, lastname, address, email, password and plan.
-$actName = $_GET['actName'];
-$actDate = $_GET['actDate'];
-$actTime = $_GET['actTime'];
-$actDescription = $_GET['actDescription'];
+$email1 = $_GET['userEmail'];
+$email2 = $_GET['friendEmail']; 
 
-$sqlQuery = "INSERT INTO " . $name_of_table . "(actName, actDate,actTime,actDescription)
-				VALUES (:actName, :actDate, :actTime, :actDescription)"; 
+
+$sqlQuery = "INSERT INTO " . $name_of_table . " 
+			VALUES (:email1, :email2);"; 
 
 // Check if the table exists in the db.
 if (tableExists($db, $name_of_table)) {
 
 	// Prepare a SQL query and bind all 6 variables. 
 	$statement1 = $db->prepare($sqlQuery);
-	$statement1->bindValue(':actName', $actName, PDO::PARAM_STR); 
-	$statement1->bindValue(':actDate', $actDate, PDO::PARAM_STR);
-	$statement1->bindValue(':actTime', $actTime, PDO::PARAM_INT);
-	$statement1->bindValue(':actDescription', $actDescription, PDO::PARAM_INT);
+	$statement1->bindValue(':email1', $email1, PDO::PARAM_STR); 
+	$statement1->bindValue(':email2', $email2, PDO::PARAM_STR);
 	
 	// Execute the SQL query using $statement1->execute(); and assign the value
 	$result = $statement1->execute();
@@ -36,13 +33,20 @@ if (tableExists($db, $name_of_table)) {
 
 	if(!$result) {
 		// Query fails.
-		$body .= "Inserting entry into table " . $name_of_table . " failed.<br/>";
+		$body .= "The new friendship could not be made<br/>";
 	} else {
 		// Query is successful.
-		$body .= "<h3>Your activity has been successfully uploaded!</h3>";
+		$statement1->closeCursor();	
+		$sqlQuery2 = "INSERT INTO " . $name_of_table . " 
+			VALUES (:email2, :email1)";
+		$statement2 = $db->prepare($sqlQuery2);
+		$statement2->bindValue(':email1', $email1, PDO::PARAM_STR); 
+		$statement2->bindValue(':email2', $email2, PDO::PARAM_STR);
+		$result = $statement2->execute(); 
+		$statement2->closeCursor();	
+		$body .= "<h3>You made a new friend!</h3>";
 	}
 	// Closing query connection
-	$statement1->closeCursor();	
 } else {
 // Table does not exist in db.
 	$body .= "Table " . $name_of_table . " does not exist.<br/>";
