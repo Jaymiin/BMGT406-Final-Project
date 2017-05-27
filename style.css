@@ -1,0 +1,98 @@
+/* CSS Document */
+*{
+	margin: 0em;
+	padding: 0em;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+body{
+	height: auto;
+	background-image: url("lake.jpeg");
+}
+
+#blok{
+	background-color: whitesmoke;
+	height: 20em;
+	width: 52em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 14em;
+	border: solid black 1px;
+	
+
+}
+#alls{
+	margin-top: -32em;
+}
+h1{
+	font-size: 5em;
+	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 1.1em;
+}
+h2{
+	font-size: 2em;
+}
+strong{
+	font-size: 1.5em;
+}
+
+#login{
+	vertical-align: top;
+	margin-top: 0em;
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	margin-left: 2em;
+	
+}
+
+#signup{
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+	margin-right: 2em;
+}
+
+#line{
+	display: inline-block;
+	height:15em;
+	width:0.5em;
+	background-color: black;
+}
+input{
+	background-color: aliceblue;
+	float: right;
+}
+.button{
+	background-color: darkgray;
+	border-color: grey;
+	height:2em;
+	width: 5em;
+}
+
+div{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	background-color: skyblue;
+	width: 100%;
+}
+
+#fb-like{
+	margin-left: 1em;
+	margin-top: 1em;
+	float: left;
+}
+#note{
+	float: right;
+	margin-right: 1em;
+	margin-top: 1em;
+}
