@@ -44,9 +44,9 @@ if (tableExists($db, $name_of_table)) {
 					$body.="What would you like to do, $firstname?<br/><br/><br/>";
 					$body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
 
-			<strong>Activity Name </strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
-			<strong>Time </strong><input class=\"ins\" type=\"time\" name=\"actTime\" /><br/><br/>
-			<strong>Date </strong><input class=\"ins\" type=\"date\" name=\"actDate\" /><br/><br/>
+			<strong>Activity Name</strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
+			<strong>Time</strong><input class=\"ins\" type=\"time\" name=\"actTime\" /><br/><br/>
+			<strong>Date</strong><input class=\"ins\" type=\"date\" name=\"actDate\" /><br/><br/>
 			<strong>Description</strong><input class=\"ins\" type=\"text\" name=\"actDescription\" /><br/><br/>
 			<input class=\"button\" type=\"reset\" name=\"reset\" value=\"Reset\" /><br /><br />
 			<input  class=\"button\" type=\"submit\" name=\"createAct\" value=\"Create Activity\" /><br /><br />
@@ -69,7 +69,7 @@ if (tableExists($db, $name_of_table)) {
 
 <form  class=\"addF\" action=\"InsertFriend.php\" methods=\"GET\">
 			<input type=\"text\" name=\"userEmail\" value=". $email . " style=\"display: none\" readonly>
-			<strong>Friend's Email </strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
+			<strong>Friend's Email</strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
 			<input class=\"button\" type=\"submit\" name=\"addF\" value=\"Add Friend\" /><br /><br />
 </form>
 

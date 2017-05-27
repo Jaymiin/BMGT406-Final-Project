@@ -52,7 +52,6 @@ if (tableExists($db, $name_of_table)) {
 	$body .= "Table " . $name_of_table . " does not exist.<br/>";
 }
 
-
 //$body .= "<br/><a href=\"http://bmgt406.rhsmith.umd.edu/~bmgt406_02/406FinalProject_V.4%20/LoginPage.php?email=mf%40gmail.com&password=02&Login=Login\"><input type=\"submit\" value = \"Main Menu\"/></a>";
 $body .= "</fieldset>";
 echo generatePage($title,$body);
