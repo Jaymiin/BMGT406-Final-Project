@@ -30,17 +30,25 @@ if (tableExists($db, $name_of_table)) {
 		if($numberOfRows) {
 			// Using a foreach loop to iterate through each row of result that is returned.
 			$body .="<table style= \"border-collapse:collapse;\">";
-			$body .= "<tr><th>Activity Name</th><th>Date</th><th>Time</th><th>Description</th></tr>";
+			$body .= "<tr><th>Activity ID</th>";
+			$body .= "<th>Activity Name</th><th>Date</th><th>Time</th><th>Description</th></tr>";
 			foreach ($numberOfRows as $multipleRows)
 					{
+					$actID = $multipleRows['AID'];
 					$actName = $multipleRows['actName'];
 					$actDate = $multipleRows['actDate'];
 					$actTime = $multipleRows['actTime'];
 					$actDescription = $multipleRows['actDescription'];
 	
 					// Display the user information (firstname, lastname, address, email, plan)
-					$body .= "<tr><td>$actName</td>";
-					$body .= "<td>$actDate</td><td>$actTime</td><td>$actDescription</td>";
+					$body .= "<tr><td>$actID</td>";
+					$body .= "<td>$actName</td><td>$actDate</td><td>$actTime</td><td>$actDescription</td>";
+					$body .= "<form  class=\"addF\" action=\"InsertActSignUp.php\" methods=\"GET\">";
+					$body .= "<td>
+					<input type=\"text\" name=\"AID\" value=". $actID . " style=\"display: none\" readonly>
+					<input type=\"text\" name=\"userEmail\">
+					<input class=\"button\" type=\"submit\" name=\"insertSignUp\" value=\"Sign Up\"/></td>";
+					$body .= "</form>";
 					$body .= "</tr>";
 					}	
 			$body .="</table>";
@@ -58,7 +66,7 @@ if (tableExists($db, $name_of_table)) {
 	$body .= "Table does not exist in the database.";
 }
 
-$body .= "<a href=\"http://bmgt406.rhsmith.umd.edu/~bmgt406_02/406Final%20Project(formatted)/LoginPage.php?email=mf%40gmail.com&password=02&Login=Login\"><input type=\"submit\" value = \"Main Menu\"/></a>";
+//$body .= "<a href=\"http://bmgt406.rhsmith.umd.edu/~bmgt406_02/406FinalProject_V.4%20/LoginPage.php?email=mf%40gmail.com&password=02&Login=Login\"><input type=\"submit\" value = \"Main Menu\"/></a>";
 $body.= "</fieldset>";
 
 echo generatePage($title,$body);

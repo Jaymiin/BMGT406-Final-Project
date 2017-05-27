@@ -40,35 +40,42 @@ if (tableExists($db, $name_of_table)) {
 					$body .= "Invalid password.";
 				} else {
 					$firstname=$singleRow['firstname'];
-					//$email = $singleRow['email'];
+					$email = $singleRow['email'];
 					$body.="What would you like to do, $firstname?<br/><br/><br/>";
 					$body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
 
-			<strong>Activity Name</strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
-			<strong>Time</strong><input class=\"ins\" type=\"time\" name=\"actTime\" /><br/><br/>
-			<strong>Date</strong><input class=\"ins\" type=\"date\" name=\"actDate\" /><br/><br/>
+			<strong>Activity Name </strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
+			<strong>Time </strong><input class=\"ins\" type=\"time\" name=\"actTime\" /><br/><br/>
+			<strong>Date </strong><input class=\"ins\" type=\"date\" name=\"actDate\" /><br/><br/>
 			<strong>Description</strong><input class=\"ins\" type=\"text\" name=\"actDescription\" /><br/><br/>
-
+			<input class=\"button\" type=\"reset\" name=\"reset\" value=\"Reset\" /><br /><br />
 			<input  class=\"button\" type=\"submit\" name=\"createAct\" value=\"Create Activity\" /><br /><br />
 </form>
 
 
 <form class=\"view\" action=\"ViewActivities.php\" method=\"GET\">
-			<input class=\"button\" class=\"view\" type=\"submit\" name=\"viewAct\" value=\"View Activities\" /><br /><br />
+			<input class=\"button\" class=\"view\" type=\"submit\" name=\"viewAct\" value=\"View All Activities\" /><br /><br />
+</form>
+
+<form class=\"view\" action=\"ViewMyActivities.php\" method=\"GET\">
+			<input type=\"text\" name=\"userEmail\" value=". $email . " style=\"display: none\" readonly>
+			<input class=\"button\" class=\"view\" type=\"submit\" name=\"viewAct\" value=\"My Activities\" /><br /><br />
 </form>
 
 <form  class=\"viewF\" action=\"ViewFriends.php\" method=\"GET\">
-			<strong>My Email</strong><input type=\"text\" name=\"userEmail\"><br/><br/>
-					<input class=\"button\" type=\"submit\" name=\"viewFriends\" value=\"View Friends\" /><br /><br />
+					<input type=\"text\" name=\"userEmail\" value=". $email . " style=\"display: none\" readonly>
+					<input class=\"button\" type=\"submit\" name=\"viewFriends\" value=\"View My Friends\" /><br /><br />
 </form>
 
 <form  class=\"addF\" action=\"InsertFriend.php\" methods=\"GET\">
-	
-			<strong>My Email</strong><input class=\"ins\" type=\"text\" name=\"userEmail\" /><br/><br/>
-			<strong>Friend's Email</strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
+			<input type=\"text\" name=\"userEmail\" value=". $email . " style=\"display: none\" readonly>
+			<strong>Friend's Email </strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
 			<input class=\"button\" type=\"submit\" name=\"addF\" value=\"Add Friend\" /><br /><br />
 </form>
 
+<p>
+<br/><a href=\"http://bmgt406.rhsmith.umd.edu/~bmgt406_02/406FinalProject_V.4/login.html\"><input type=\"submit\" value = \"Logout\"/></a>
+</p></br>
 </fieldset>
 <footer>
   		<div id=\"note\">BMGT406 Final Project 2016 - Maron Fasil, Jasmine Yu</div>
