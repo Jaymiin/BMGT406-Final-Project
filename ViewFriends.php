@@ -11,21 +11,30 @@ $body = "<fieldset><legend> $title </legend>";
 $name_of_table = 'workoutFriends';
 $thisUser = $_GET['userEmail'];
 
-echo $thisUser;
-//$thisUser = $_GET['userEmail'];
 //require_once('LoginPage.php');
 //$thisUser = $inputemail;
 
 // Check if the table exists in the db.
 if (tableExists($db, $name_of_table)) {
 	// Prepare a SQL query
-	$sqlQuery = "SELECT firstname, lastname FROM users
-	WHERE email IN (SELECT email2 FROM " . $name_of_table . " WHERE email1 = :email1;";
-	//NEED SET EMAIL1 EQUAL TO THE NAME OF THE PERSON WHO IS LOGGED IN? POSSIBLE TO GET THAT
-	//VARIABLE? PERHAPS DECLARE PUBLIC?
-	//email "IN" or "EQUAL TO"
+	$sqlQuery =
+"SELECT email2 
+FROM workoutFriends 
+WHERE email1 = :userEmail;
+";
+
+//join following query to get names?
+//SELECT firstname, lastname
+//FROM users u, workoutFriends w
+//WHERE u.email=w.email2;";
+
+//SELECT users.firstname, users.lastname, users.email, workoutFriends.email1
+//FROM users 
+//INNER JOIN workoutFriends
+//ON users.email = workoutFriends.email1);";
+
 	$statement1 = $db->prepare($sqlQuery);
-	$statement1->bindValue(':email1', $thisUser, PDO::PARAM_STR);
+	$statement1->bindValue(':userEmail', $thisUser, PDO::PARAM_STR);
 	$result = $statement1->execute();
 
 	if (!$result) {
@@ -34,13 +43,13 @@ if (tableExists($db, $name_of_table)) {
 		$numberOfRows = $statement1->fetchAll(PDO::FETCH_ASSOC);
 		if($numberOfRows) {
 			$body .="<table style= \"border-collapse:collapse;\">";
-			$body .= "<tr><th>Activity Name</th><th>Date</th><th>Time</th><th>Description</th></tr>";
 			foreach ($numberOfRows as $multipleRows)
 					{
-					$firstname = $multipleRows['firstname'];
-					$lastname = $multipleRows['lastname'];
-					$body .= "<tr><td>$actName</td>";
-					$body .= "<td>$firstname</td><td>$lastname</td>";
+					$email2 = $multipleRows['email2'];
+					//$fname = $multipleRows['firstname'];
+					//$lname = $multipleRows['lastname'];		
+					//$body .= "<td>$fname</td><td>$lname</td><td>$email2</td>";
+					$body .= "<td>$email2</td>";
 					$body .= "</tr>";
 					}
 			$body .="</table>";

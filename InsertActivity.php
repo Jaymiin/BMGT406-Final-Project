@@ -19,7 +19,7 @@ $actDescription = $_GET['actDescription'];
 
 $sqlQuery = "INSERT INTO " . $name_of_table . "(actName, actDate,actTime,actDescription)
 				VALUES (:actName, :actDate, :actTime, :actDescription)"; 
-
+if(isset($actName) && isset($actDate) && isset($actTime)) {
 // Check if the table exists in the db.
 if (tableExists($db, $name_of_table)) {
 
@@ -47,7 +47,10 @@ if (tableExists($db, $name_of_table)) {
 // Table does not exist in db.
 	$body .= "Table " . $name_of_table . " does not exist.<br/>";
 }
-
+}
+else {
+	$body .= "Please Fill in Activity Name, Date, and Time";
+}
 $body .= "<br/><a href=\"http://bmgt406.rhsmith.umd.edu/~bmgt406_02/406Final%20Project(formatted)/LoginPage.php?email=mf%40gmail.com&password=02&Login=Login\"><input type=\"submit\" value = \"Main Menu\"/></a>";
 $body .= "</fieldset>";
 echo generatePage($title,$body);

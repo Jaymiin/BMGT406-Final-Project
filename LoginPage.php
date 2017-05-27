@@ -41,7 +41,7 @@ if (tableExists($db, $name_of_table)) {
 				} else {
 					$firstname=$singleRow['firstname'];
 					//$email = $singleRow['email'];
-					$body.="What would you like to do, $firstname?<br/><br/>";
+					$body.="What would you like to do, $firstname?<br/><br/><br/>";
 					$body.= "<form id=\"signup\" action=\"InsertActivity.php\" method=\"GET\">
 
 			<strong>Activity Name</strong><input class=\"ins\" type=\"text\" name=\"actName\" /><br/><br/>
@@ -59,16 +59,15 @@ if (tableExists($db, $name_of_table)) {
 
 <form  class=\"viewF\" action=\"ViewFriends.php\" method=\"GET\">
 			<strong>My Email</strong><input type=\"text\" name=\"userEmail\"><br/><br/>
-					<input class=\"button\" class=\"viewF\" type=\"submit\" name=\"viewFriends\" value=\"View Friends\" /><br /><br />
+					<input class=\"button\" type=\"submit\" name=\"viewFriends\" value=\"View Friends\" /><br /><br />
 </form>
-
 
 <form  class=\"addF\" action=\"InsertFriend.php\" methods=\"GET\">
-			<var name=\"userEmail\">$inputemail</var>
+	
+			<strong>My Email</strong><input class=\"ins\" type=\"text\" name=\"userEmail\" /><br/><br/>
 			<strong>Friend's Email</strong><input class=\"ins\" type=\"text\" name=\"friendEmail\" /><br/><br/>
-			<input class=\"button\" class=\"addF\" type=\"submit\" name=\"addF\" value=\"Add Friend\" /><br /><br />
+			<input class=\"button\" type=\"submit\" name=\"addF\" value=\"Add Friend\" /><br /><br />
 </form>
-
 
 </fieldset>
 <footer>
