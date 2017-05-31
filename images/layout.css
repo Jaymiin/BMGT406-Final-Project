@@ -1,0 +1,169 @@
+*{
+	margin: 0em;
+	padding: 0em;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+/* Header styles */
+
+header {
+	background-color: #FFF;
+	-moz-border-radius-topleft: 1.1em;
+	border-top-left-radius: 1.1em;
+	-moz-border-radius-topright: 1.1em;
+	border-top-right-radius: 1.1em;
+	-webkit-box-shadow: #858585 0.1em 0.1em 0.2em;
+	box-shadow: #858585 0.1em 0.1em 0.2em;
+	height: 115px;
+}
+
+#logo img {
+	float: left;
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+#site-name {
+	color: #D33;
+	padding-top: 0.2em;
+	letter-spacing: -0.04em;
+	font-size: 2.2em;
+	font-weight: bold;
+	text-align: left;
+	text-transform: uppercase;
+
+}
+
+#site-slogan {
+	color: #686868;
+	letter-spacing: -0.05em;
+	font-size: 1.5em;
+	text-align: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* Navigation styles */
+
+#navbar {
+	background-color: #EEE; /* light gray */
+	margin-top: 0em;
+	font-weight: bold;
+	text-transform: uppercase;
+	height: 2.6em;
+	line-height: 2.6em;
+	font-size: 0.9em;
+	border-top: solid 0.1em #CCC;
+}
+
+#navbar ul {
+	margin: 0;
+	padding: 0;
+}
+
+#navbar ul li {
+	float: left;
+	height: 2.6em;
+	line-height: 2.6em;
+	list-style-type: none;
+}
+
+#navbar a {
+	color: #222;
+	display: block;
+	padding: 0 1.3em;
+}
+
+#navbar a:hover {
+	text-decoration: none;
+	background-color: #800000;
+	color: #FFF;
+	-webkit-transition: background 0.4s linear;
+	-moz-transition: background 0.4s linear;
+	transition: background 0.4s linear;
+}
+
+body {
+	height: auto;
+	width: 75%;
+	color: #222; /* black */
+background-image: url("lake.jpeg");
+	margin: 0 auto;
+	padding: 10px;
+    border: none;
+}
+
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+/* Content styles */
+
+article {
+	padding: 1em;
+	float: left;
+	clear: left;
+	width: 97%;
+	background-color: #FFF; /* white */
+	-webkit-border-radius: 0.1em;
+	-moz-border-radius: 0.1em;
+	-ms-border-radius: 0.1em;
+	-o-border-radius: 0.1em;
+	border-radius: 0.1em;
+	-webkit-box-shadow: #858585 0.1em 0.1em 0.2em;
+	box-shadow: #858585 0.1em 0.1em 0.2em;
+	
+}
+
+body, input, select, a.button{
+	font-family: "Ubuntu", "HelveticaNeue", "Helvetica Neue", Helvetica,
+	Arial, sans-serif;
+}
+
+fieldset {
+	background: #F8F8FF url('../images/grey-white.gif') repeat-x 0 0;
+	border: 0.1em solid #CCC;
+	line-height: 1.5em;
+	margin: 1em 0.3em;
+	padding: 0.8em 1em 1em;
+	-webkit-border-radius: 1.1em;
+	-moz-border-radius: 1.1em;
+	border-radius: 1.1em;
+}
+
+legend {
+	letter-spacing: 0.25em;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #D33;
+	padding: 0 0.3em 0 0.3em;
+}
+
+/* Footer styles */
+
+table, tr, td, th {
+	border: 2px solid black;
+
+}
+
+table {
+	border-collapse: collapse;
+	
+	}
+	
+	#fb-like{
+	margin-left: 1em;
+	margin-top: 1em;
+	float: left;
+}
+#note{
+	float: right;
+	margin-right: 1em;
+	margin-top: 1em;
+}
